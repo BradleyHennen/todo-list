@@ -1,5 +1,7 @@
 const pg = require ('pg');
 const Pool = pg.Pool;
+
+//links server to the weekend-to-do-app database
 const pool = new Pool({
     database: 'weekend-to-do-app',
     host: 'localhost',

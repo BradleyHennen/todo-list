@@ -7,6 +7,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('server/public'));
 
+//links server to todo.router.js
 const todoRouter = require('./modules/todo.router');
 app.use(todoRouter);
 

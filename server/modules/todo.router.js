@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('./pool');
 
+
+//GETs info from database and sends info to client side. 
 router.get('/todo', (req, res) => {
     console.log('asking for todo list');
     // Get the koalas from the database
@@ -13,8 +15,9 @@ router.get('/todo', (req, res) => {
         console.log(`Error getting todo list`, error);
         res.sendStatus(500); 
       })
-  })
+})//GET END
 
+//Sends user input data from client side to the database .
 router.post('/todo', (req, res) => {
     let todo = req.body;
     console.log('Adding todo', todo);
@@ -29,11 +32,13 @@ router.post('/todo', (req, res) => {
         console.log(error);
         res.sendStatus(500);
         })
-})
+})//POST END
 
+
+//Updates the database whether or not the task has been completed from the client side
 router.put('/todo/:id', (req,res) => {
     let todo = req.body;    
-    console.log('this koala has been updated');
+    console.log('this todo has been updated');
     let sqlText = `UPDATE "todo" SET "status" = $1 WHERE "id" = $2;`;
     pool.query(sqlText, [todo.status,todo.id]
     ).then( (result)=> {
@@ -41,9 +46,10 @@ router.put('/todo/:id', (req,res) => {
     }).catch ( (error) => {
         res.sendStatus(500);
     })
-})
+})//PUT END
 
 
+//Deletes specified todo item from the database
 router.delete('/todo/:id', (req, res) => {
     let id = req.params.id;
     console.log('Deleting todo with id:', id);
@@ -57,6 +63,6 @@ router.delete('/todo/:id', (req, res) => {
             console.log(error);
             res.sendStatus(500);
         })
-})
+})//DELETE END
 
 module.exports = router;
