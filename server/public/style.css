@@ -1,0 +1,14 @@
+body {
+    color: white;
+    background-image: url(images/jason-leung-1378422-unsplash.jpg);
+    background-size: 100%;
+    font-family: 'Varela Round', sans-serif;
+}
+
+h1 {
+    font-size: 100px;
+}
+
+.green {
+    background-color: green;
+}
