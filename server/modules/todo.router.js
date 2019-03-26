@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('./pool');
+const pool = require('../modules/pool.js');
+
 
 
 //GETs info from database and sends info to client side. 
